@@ -48,6 +48,18 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
 
+    protected static final String FRAGMENT_TAG = "BaseFragment";
+
+    private String mTag = "";
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            mTag = savedInstanceState.getString(FRAGMENT_TAG);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,4 +71,5 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayout();
 
     protected abstract void bindView(View viewHolder);
+
 }

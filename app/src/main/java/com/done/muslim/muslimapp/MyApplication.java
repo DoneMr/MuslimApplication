@@ -5,6 +5,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
+
 /**
  * code is far away from bug with the animal protecting
  * 　　　　　　　 ┏┓       ┏┓+ +
@@ -50,11 +53,26 @@ public class MyApplication extends Application {
 
     private static Context GLOBAL_CONTEXT;
 
+    private RefWatcher refWatcher;
+
     @Override
     public void onCreate() {
         super.onCreate();
         GLOBAL_HANDLER = new Handler(Looper.getMainLooper());
         GLOBAL_CONTEXT = this;
+        refWatcher = setupLeakCanary();
+    }
+
+    private RefWatcher setupLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return RefWatcher.DISABLED;
+        }
+        return LeakCanary.install(this);
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        MyApplication applicationContext = (MyApplication) context.getApplicationContext();
+        return applicationContext.refWatcher;
     }
 
     public static Handler getGlobalHandler() {
