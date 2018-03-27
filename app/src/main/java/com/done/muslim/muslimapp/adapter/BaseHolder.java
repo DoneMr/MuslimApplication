@@ -1,12 +1,7 @@
-package com.done.muslim.muslimapp;
+package com.done.muslim.muslimapp.adapter;
 
-import android.app.Application;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 /**
  * code is far away from bug with the animal protecting
@@ -43,43 +38,28 @@ import com.squareup.leakcanary.RefWatcher;
  * 每晚灯火阑珊处，夜难寐，加班狂。
  *
  * @author Done
- * @date 2018/3/21
- * Created by Done on 2018/3/21.
+ * @date 2018/3/27
+ * Created by Done on 2018/3/27.
  */
 
-public class MyApplication extends Application {
+public class BaseHolder extends RecyclerView.ViewHolder {
 
-    private static Handler GLOBAL_HANDLER;
+    /**
+     * 广告轮播
+     */
+    public static final int ADVERTISING_CAROUSEL_TYPE = 0;
 
-    private static Context GLOBAL_CONTEXT;
+    /**
+     * 广告轮播
+     */
+    public static final int ADVERTISING_ITEM_TYPE = 1;
 
-    private RefWatcher refWatcher;
+    /**
+     * 正常条目
+     */
+    public static final int INFO_NORMAL_TYPE = 2;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        GLOBAL_HANDLER = new Handler(Looper.getMainLooper());
-        GLOBAL_CONTEXT = getApplicationContext();
-        refWatcher = setupLeakCanary();
-    }
-
-    private RefWatcher setupLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return RefWatcher.DISABLED;
-        }
-        return LeakCanary.install(this);
-    }
-
-    public static RefWatcher getRefWatcher(Context context) {
-        MyApplication applicationContext = (MyApplication) context.getApplicationContext();
-        return applicationContext.refWatcher;
-    }
-
-    public static Handler getGlobalHandler() {
-        return GLOBAL_HANDLER;
-    }
-
-    public static Context getGlobalContext() {
-        return GLOBAL_CONTEXT;
+    public BaseHolder(View itemView) {
+        super(itemView);
     }
 }

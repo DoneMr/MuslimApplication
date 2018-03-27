@@ -48,8 +48,8 @@ public class UserFragment extends BaseFragment {
     public static Fragment newInstance(String tag) {
         Bundle args = new Bundle();
         args.putString(FRAGMENT_TAG, tag);
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.setArguments(args);
-        return homeFragment;
+        UserFragment userFragment = new UserFragment();
+        userFragment.setArguments(args);
+        return userFragment;
     }
 }

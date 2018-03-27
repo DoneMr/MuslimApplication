@@ -3,9 +3,7 @@ package com.done.muslim.muslimapp.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.done.muslim.muslimapp.common.BaseFragment;
 import com.done.muslim.muslimapp.fragment.HomeFragment;
 import com.done.muslim.muslimapp.fragment.UserFragment;
 
@@ -39,12 +37,12 @@ import java.util.List;
  * @date 2018/3/22
  */
 
-public class MyFragmentPageAdapter extends FragmentPagerAdapter {
+public class MainFragmentPageAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragments;
 
 
-    public MyFragmentPageAdapter(FragmentManager fm) {
+    public MainFragmentPageAdapter(FragmentManager fm) {
         super(fm);
         this.fragments = new ArrayList<>();
         fragments.add(HomeFragment.newInstance("HomeFragment"));
@@ -60,5 +58,11 @@ public class MyFragmentPageAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return fragments.size();
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String title = fragments.get(position).getClass().getSimpleName();
+        return title;
     }
 }

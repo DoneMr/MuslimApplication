@@ -3,7 +3,7 @@ package com.done.muslim.muslimapp;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
-import com.done.muslim.muslimapp.adapter.MyFragmentPageAdapter;
+import com.done.muslim.muslimapp.adapter.MainFragmentPageAdapter;
 import com.done.muslim.muslimapp.common.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -24,12 +24,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void bindView() {
         tabLayout = findViewById(R.id.tb_main);
-        tabLayout.addTab(tabLayout.newTab().setText(mainTitles[0]));
-        tabLayout.addTab(tabLayout.newTab().setText(mainTitles[1]));
         vpMain = findViewById(R.id.vp_main);
-//        MyFragmentPageAdapter fragmentPageAdapter = new MyFragmentPageAdapter(getSupportFragmentManager());
-//        vpMain.setAdapter(fragmentPageAdapter);
-//        tabLayout.setupWithViewPager(vpMain);
+        MainFragmentPageAdapter fragmentPageAdapter = new MainFragmentPageAdapter(getSupportFragmentManager());
+        vpMain.setAdapter(fragmentPageAdapter);
+        tabLayout.setupWithViewPager(vpMain);
     }
 
     @Override

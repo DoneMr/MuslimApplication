@@ -7,6 +7,7 @@
     tools:context="com.done.muslim.muslimapp.MainActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -15,23 +16,31 @@
         app:title="Muslim"
         app:titleTextColor="#DDDDDD" />
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tb_main"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    </android.support.v4.view.ViewPager>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#AAAAAA"
+        app:layout_constraintTop_toBottomOf="@+id/vp_main" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tb_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabMode="fixed">
 
     </android.support.design.widget.TabLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent">
-
-    </android.support.v4.view.ViewPager>
 
 </android.support.constraint.ConstraintLayout>

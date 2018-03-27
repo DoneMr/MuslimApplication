@@ -2,6 +2,7 @@ package com.done.muslim.muslimapp.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.done.muslim.muslimapp.R;
@@ -36,6 +37,7 @@ import com.done.muslim.muslimapp.common.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
 
+    private RecyclerView rcvHomeInfo;
 
     @Override
     protected int getLayout() {
@@ -44,7 +46,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void bindView(View viewHolder) {
-
+        rcvHomeInfo = viewHolder.findViewById(R.id.rcv_home_info);
     }
 
     public static Fragment newInstance(String tag) {
